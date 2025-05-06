@@ -1,7 +1,9 @@
 <a name="readme-top" id="readme-top"></a>
-# XXX SaaS Vanilla MVC YYYY SN
+# HJK SaaS Vanilla MVC 2025 S1
 
 Base Code for a Vanilla PHP Micro-MVC Framework.
+
+A simple web application which manages jokes using a php & sql micro framework. This application allows users to register, log in, and manage jokes.
 
 Used by students at North Metropolitan TAFE for learning and assessment purposes.
 
@@ -27,12 +29,12 @@ Used by students at North Metropolitan TAFE for learning and assessment purposes
 |---------------------|-------------------------------------------------------------------------------------------------------------|
 | BREAD               | Database operations to Browse, Read, Edit, Add and Delete data                                              |
 | CRUD                | More commonly used term over BREAD. Create (Add), Retrieve (Browse/Read), Update (Edit) and Delete (Delete) |
-| Relational Database | ...                                                                                                         |
-| One to One          | ...                                                                                                         |
-| One to Many         | ...                                                                                                         |
-| Many to Many        | ...                                                                                                         |
-| Polymorphism        | ...                                                                                                         |
-| MVC                 | ...                                                                                                         |
+| Relational Database | A type of database that organizes data into rows and columns                                                |
+| One to One          | A link between the information in two tables, where each record in each table only appears once             |
+| One to Many         | One table or entity that contains values and refers to another table                                        |
+| Many to Many        | One or more items in one table can have a relationship to one or more items in another table                |
+| Polymorphism        | It allows a single table to be associated with multiple other tables                                        |
+| MVC                 | A pattern in software design commonly used to implement user interfaces, data, and controlling logic        |
 | ...                 | ...                                                                                                         |
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
@@ -176,9 +178,9 @@ TODO: More details on use for use in developing basic application using this cod
 
 ## Contact
 
-Adrian Gould - Adrian.Gould@nmtafe.wa.edu.au
+HONG JAE KIM - 20115830@tafe.wa.edu.au
 
-Project Link: https://github.com/AdyGCode/xxx-saas-vanilla-mvc-yyyy-sn
+Project Link: https://github.com/KoreAustralian/HJK-php-mvc-jokes-2025-s1
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
