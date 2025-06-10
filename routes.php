@@ -25,6 +25,9 @@ $router->post('/auth/register', 'UserController@store', ['guest']);
 $router->post('/auth/logout', 'UserController@logout', ['auth']);
 $router->post('/auth/login', 'UserController@authenticate', ['guest']);
 
+$router->get('/auth/edit', 'UserController@edit', ['auth']);
+$router->post('/auth/edit', 'UserController@update', ['auth']);
+
 /**
  * Example Routes for a feature (Feature)
  *

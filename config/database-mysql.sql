@@ -111,7 +111,7 @@ CREATE TABLE IF NOT EXISTS `HJK_SaaS_FED_2025_S1`.`users`
     `id`            int            NOT NULL AUTO_INCREMENT,
     `given_name`    varchar(128)   NOT NULL,
     `family_name`   varchar(128)   DEFAULT NULL,
-    `nickname`          varchar(255)   DEFAULT NULL,
+    `nickname`      varchar(255)   NOT NULL,
     `email`         varchar(255)   NOT NULL,
     `password`      varchar(255)   NOT NULL,
     `city`          varchar(45)    DEFAULT NULL,

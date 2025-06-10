@@ -72,23 +72,35 @@ class UserController
      */
     public function store()
     {
-        $name = $_POST['name'] ?? null;
-        $email = $_POST['email'] ?? null;
-        $city = $_POST['city'] ?? null;
-        $state = $_POST['state'] ?? null;
-        $password = $_POST['password'] ?? null;
-        $passwordConfirmation = $_POST['password_confirmation'] ?? null;
+        $givenName  = $_POST['given_name'] ?? '';
+        $familyName = $_POST['family_name'] ?? '';
+        $nickname   = $_POST['nickname'] ?? '';
+        $email      = $_POST['email'] ?? '';
+        $city       = $_POST['city'] ?? '';
+        $state      = $_POST['state'] ?? '';
+        $country    = $_POST['country'] ?? '';
+        $password   = $_POST['password'] ?? '';
+        $passwordConfirmation = $_POST['password_confirmation'] ?? '';
 
         $errors = [];
 
         // Validation
+        if (!Validation::string($givenName, 1, 128)) {
+            $errors['given_name'] = 'Given name must be a 1 ~ 128 character.';
+        }
+
+        if ($nickname === '') {
+            $nickname = $givenName;
+        }
+
+        if (!Validation::string($nickname, 1, 32)) {
+            $errors['nickname'] = 'Nickname은 must be 1 ~ 32 character.';
+        }
+
         if (!Validation::email($email)) {
             $errors['email'] = 'Please enter a valid email address';
         }
 
-        if (!Validation::string($name, 2, 50)) {
-            $errors['name'] = 'Name must be between 2 and 50 characters';
-        }
 
         if (!Validation::string($password, 6, 50)) {
             $errors['password'] = 'Password must be at least 6 characters';
@@ -98,14 +110,29 @@ class UserController
             $errors['password_confirmation'] = 'Passwords do not match';
         }
 
+        if ($city === '') {
+            $city = 'Unknown';
+        }
+
+        if ($state === '') {
+            $state = 'Unknown';
+        }
+
+        if ($country === '') {
+            $country = 'Australia';  //default
+        }
+
         if (!empty($errors)) {
             loadView('users/create', [
                 'errors' => $errors,
                 'user' => [
-                    'name' => $name,
+                    'givenName' => $givenName,
+                    'familyName' => $familyName,
+                    'nickname' => $nickname,
                     'email' => $email,
                     'city' => $city,
                     'state' => $state,
+                    'country' => $country
                 ]
             ]);
             exit;
@@ -128,14 +155,17 @@ class UserController
 
         // Create user account
         $params = [
-            'name' => $name,
+            'given_name'  => $givenName,
+            'family_name' => $familyName,
+            'nickname'    => $nickname,
             'email' => $email,
             'city' => $city,
             'state' => $state,
+            'country' => $country,
             'password' => password_hash($password, PASSWORD_DEFAULT)
         ];
 
-        $this->db->query('INSERT INTO users (name, email, city, state, password) VALUES (:name, :email, :city, :state, :password)', $params);
+        $this->db->query('INSERT INTO users (given_name, family_name, nickname, email, city, state, country, password) VALUES (:given_name, :family_name, :nickname, :email, :city, :state, :country, :password)', $params);
 
         // Get new user ID
         $userId = $this->db->conn->lastInsertId();
@@ -143,10 +173,13 @@ class UserController
         // Set user session
         Session::set('user', [
             'id' => $userId,
-            'name' => $name,
+            'given_name' => $givenName,
+            'family_name' => $familyName,
+            'nickname' => $nickname,
             'email' => $email,
             'city' => $city,
-            'state' => $state
+            'state' => $state,
+            'country' => $country
         ]);
 
         redirect('/');
@@ -223,12 +256,76 @@ class UserController
         // Set user session
         Session::set('user', [
             'id' => $user->id,
-            'name' => $user->name,
+            'given_name' => $user->given_name,
+            'family_name' => $user->family_name,
+            'nickname' => $user->nickname,
             'email' => $user->email,
             'city' => $user->city,
-            'state' => $user->state
+            'state' => $user->state,
+            'country' => $user->country,
         ]);
 
         redirect('/');
     }
+
+    public function edit()
+    {
+        $user = Session::get('user');
+
+        if (!$user) {
+            redirect('/auth/login');
+        }
+
+        loadView('users/edit', ['user' => $user]);
+    }
+
+    public function update()
+    {
+        $user = Session::get('user');
+        if (!$user) {
+            redirect('/auth/login');
+        }
+
+        $givenName = $_POST['given_name'] ?? '';
+        $familyName = $_POST['family_name'] ?? '';
+        $nickname = $_POST['nickname'] ?? '';
+        $city = $_POST['city'] ?? '';
+        $state = $_POST['state'] ?? '';
+        $country = $_POST['country'] ?? '';
+
+        $errors = [];
+
+        if (!Validation::string($givenName, 1, 128)) {
+            $errors['given_name'] = 'Given name must be 1 to 128 characters';
+        }
+
+        if (!Validation::string($nickname, 1, 32)) {
+            $errors['nickname'] = 'Nickname must be 1 to 32 characters';
+        }
+
+        if (!empty($errors)) {
+            loadView('users/edit', ['errors' => $errors, 'user' => $_POST]);
+            exit;
+        }
+
+        $params = [
+            'id' => $user['id'],
+            'given_name' => $givenName,
+            'family_name' => $familyName,
+            'nickname' => $nickname,
+            'city' => $city,
+            'state' => $state,
+            'country' => $country
+        ];
+
+        $this->db->query(
+            'UPDATE users SET given_name = :given_name, family_name = :family_name, nickname = :nickname, city = :city, state = :state, country = :country WHERE id = :id',
+            $params
+        );
+
+        Session::set('user', array_merge($user, $params));
+
+        redirect('/dashboard');
+    }
+
 }
