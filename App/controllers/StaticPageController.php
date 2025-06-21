@@ -28,4 +28,9 @@ class StaticPageController
     {
         include basePath('App/views/index.view.php');
     }
+
+    public static function about()
+    {
+        include basePath('App/views/about.view.php');
+    }
 }

@@ -14,7 +14,10 @@
  *
  */
 
-$router->get('/', 'StaticPageController@index');
+$router->get('/', 'HomeController@index');
+
+$router->get('/index', 'StaticPageController@index');
+$router->get('/about', 'StaticPageController@about');
 
 $router->get('/dashboard', 'HomeController@dashboard');
 
