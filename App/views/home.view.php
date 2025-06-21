@@ -19,14 +19,14 @@ loadPartial('navigation');
 <main class="container mx-auto bg-zinc-50 py-8 px-4 shadow shadow-black/25 rounded-lg">
     <article  class="grid grid-cols-1">
         <header class="bg-zinc-700 text-zinc-200 -mx-4 -mt-8 mb-4 p-8 text-2xl font-bold rounded-t-lg">
-            <h1>Vanilla PHP MVC Demo</h1>
+            <h1>HONG JAE's Joke DB</h1>
         </header>
 
-        <section class="my-4 p-4  gap-8 justify-start">
-            <p class="text-3xl font-light">Welcome to the XXX SaaS Vanilla MVC YYYY/SN Template App</p>
-            <p>This is a starter template for simple vanilla mvc based applications.</p>
-            <p>Its primary purpose is as a <strong>teaching tool</strong> and is provided with no guarantees for security and production readiness.</p>
-        </section>
+        <div class="mt-6 p-4 bg-gray-100 rounded shadow text-center">
+            <p class="text-gray-500 italic">
+                No jokes to display yet. This section will be updated once the Jokes feature is implemented.
+            </p>
+        </div>
     </article>
 
     <article class="grid grid-cols-2 ">

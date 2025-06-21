@@ -16,11 +16,6 @@
 
 $router->get('/', 'HomeController@index');
 
-$router->get('/index', 'StaticPageController@index');
-$router->get('/about', 'StaticPageController@about');
-
-$router->get('/dashboard', 'HomeController@dashboard');
-
 $router->get('/auth/register', 'UserController@create', ['guest']);
 $router->get('/auth/login', 'UserController@login', ['guest']);
 
@@ -63,3 +58,21 @@ $router->get('/products/{id}', 'ProductController@show');
 $router->post('/products', 'ProductController@store', ['auth']);
 $router->put('/products/{id}', 'ProductController@update', ['auth']);
 $router->delete('/products/{id}', 'ProductController@destroy', ['auth']);
+
+
+/**
+ * Joke feature routes
+ */
+$router->get('/jokes', 'JokeController@index');
+
+$router->get('/jokes/create', 'JokeController@create', ['auth']);
+$router->post('/jokes', 'JokeController@store', ['auth']);
+
+$router->get('/jokes/{id}', 'JokeController@show');
+
+$router->get('/jokes/about', 'StaticPageController@about');
+
+$router->get('/jokes/edit/{id}', 'JokeController@edit', ['auth']);
+$router->post('/jokes/edit/{id}', 'JokeController@update', ['auth']);
+
+$router->post('/jokes/delete/{id}', 'JokeController@destroy', ['auth']);

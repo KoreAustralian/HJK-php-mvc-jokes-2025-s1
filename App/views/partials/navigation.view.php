@@ -41,11 +41,11 @@ $authenticated = new Authorise();
             if ($authenticated->isAuthenticated()) {
                 ?>
                 <li>
-                    <a href="/dashboard"
+                    <a href="/auth/edit"
                        class="pb-2 px-1 text-gray-400 hover:text-gray-300
                      border-0 border-b-2 hover:border-b-gray-500
                      transition ease-in-out duration-500">
-                        Dashboard
+                        Users
                     </a>
                 </li>
                 <?php
@@ -53,11 +53,11 @@ $authenticated = new Authorise();
             ?>
 
             <li>
-                <a href="/products"
+                <a href="/jokes"
                    class="pb-2 px-1 text-gray-400 hover:text-gray-300
                      border-0 border-b-2 hover:border-b-gray-500
                      transition ease-in-out duration-500">
-                    Products
+                    Jokes
                 </a>
             </li>
             <li>
@@ -117,10 +117,10 @@ $authenticated = new Authorise();
             ?>
 
             <li>
-                <form method="GET" action="#" class="block mx-5 flex">
-                    <input type="text" name="keywords" placeholder="Product search..."
+                <form method="GET" action="/jokes" class="block mx-5 flex">
+                    <input type="text" name="query" placeholder="Search jokes..."
                            class="w-full md:w-auto px-4 py-1 border border-gray-800 focus:outline-none focus:border-b-gray-500"/>
-                    <button class="w-full md:w-auto bg-gray-500 hover:bg-gray-600 text-white px-4 py-1 focus:outline-none transition ease-in-out duration-500">
+                    <button class="w-full md:w-auto bg-blue-600 hover:bg-blue-700 text-white px-4 py-1 focus:outline-none transition ease-in-out duration-500">
                         <i class="fa fa-search"></i> Search
                     </button>
                 </form>
