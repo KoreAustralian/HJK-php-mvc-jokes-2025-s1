@@ -19,6 +19,8 @@ namespace App\Controllers;
 
 
 use Framework\Database;
+use App\Models\JokeModel;
+
 
 class HomeController
 {
@@ -37,7 +39,21 @@ class HomeController
      */
     public function index()
     {
-        loadView('home', []);
+        $randomJoke = JokeModel::randomOne(db());
+
+        $jokeCount = null;
+        $userCount = null;
+
+        if (isset($_SESSION['user'])) {
+            $jokeCount = JokeModel::countAll(db());
+            $userCount = $this->db->query('SELECT COUNT(*) FROM users')->fetchColumn();
+        }
+
+        loadView('home', [
+            'randomJoke' => $randomJoke,
+            'jokeCount' => $jokeCount,
+            'userCount' => $userCount
+        ]);
     }
 
     /*

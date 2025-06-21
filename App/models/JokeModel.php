@@ -16,6 +16,11 @@ class JokeModel
         return $stmt->fetchAll(PDO::FETCH_ASSOC);
     }
 
+    public static function countAll(PDO $db): int
+    {
+        return (int) $db->query('SELECT COUNT(*) FROM jokes')->fetchColumn();
+    }
+
     public static function find(PDO $db, $id)
     {
         $stmt = $db->prepare('SELECT jokes.*, categories.name AS category_name, users.nickname AS author_name
@@ -27,11 +32,21 @@ class JokeModel
         return $stmt->fetch(PDO::FETCH_ASSOC);
     }
 
-    public static function random(PDO $db)
+    public static function randomOne(PDO $pdo): ?array
     {
-        $stmt = $db->query('SELECT * FROM jokes ORDER BY RAND() LIMIT 1');
-        return $stmt->fetch(PDO::FETCH_ASSOC);
+        $stmt = $pdo->query("
+        SELECT jokes.*, categories.name AS category_name, users.nickname AS author_name
+        FROM jokes
+        LEFT JOIN categories ON jokes.category_id = categories.id
+        LEFT JOIN users ON jokes.author_id = users.id
+        ORDER BY RAND()
+        LIMIT 1
+    ");
+
+        $joke = $stmt->fetch(PDO::FETCH_ASSOC);
+        return $joke ?: null;
     }
+
 
     public static function create(PDO $db, array $data)
     {

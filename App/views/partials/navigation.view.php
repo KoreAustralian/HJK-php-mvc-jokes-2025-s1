@@ -103,6 +103,14 @@ $authenticated = new Authorise();
                 <?php
             } else {
                 ?>
+                <?php
+                if ($authenticated->isAuthenticated()) {
+                    $nickname = $_SESSION['user']['nickname'] ?? 'User';
+                    ?>
+                    <li class="px-2 py-1 text-sm text-green-400">
+                        <?= htmlspecialchars($nickname ?? 'Guest') ?>
+                    </li>
+                <?php } ?>
                 <li>
                     <form method="POST" action="/auth/logout" class="">
                         <button class="pb-2 px-1 text-sm text-gray-400 hover:text-gray-300

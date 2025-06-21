@@ -22,11 +22,27 @@ loadPartial('navigation');
             <h1>HONG JAE's Joke DB</h1>
         </header>
 
-        <div class="mt-6 p-4 bg-gray-100 rounded shadow text-center">
-            <p class="text-gray-500 italic">
-                No jokes to display yet. This section will be updated once the Jokes feature is implemented.
-            </p>
-        </div>
+        <?php if (isset($_SESSION['user'])): ?>
+            <section class="bg-gray-100 text-gray-700 p-4 rounded my-4">
+                <p><strong>Total Jokes:</strong> <?= $jokeCount ?></p>
+                <p><strong>Total Users:</strong> <?= $userCount ?></p>
+            </section>
+        <?php endif; ?>
+
+        <section class="my-6 p-4 bg-gray-100 rounded shadow">
+            <h2 class="text-xl font-bold mb-2">Random Joke</h2>
+
+            <?php if ($randomJoke): ?>
+                <h3 class="text-lg font-semibold"><?= htmlspecialchars($randomJoke['title']) ?></h3>
+                <p class="text-gray-700"><?= nl2br(htmlspecialchars($randomJoke['body'])) ?></p>
+                <p class="text-sm text-gray-500 mt-2">
+                    Category: <?= htmlspecialchars($randomJoke['category_name'] ?? 'Unknown') ?> |
+                    Author: <?= htmlspecialchars($randomJoke['author_name'] ?? 'Anonymous') ?>
+                </p>
+            <?php else: ?>
+                <p class="text-gray-500 italic">No jokes to display yet. This section will be updated once the Jokes feature is implemented.</p>
+            <?php endif; ?>
+        </section>
     </article>
 
     <article class="grid grid-cols-2 ">
