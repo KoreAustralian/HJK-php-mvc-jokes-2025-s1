@@ -212,7 +212,7 @@ corporate or other materials both digital and non-digital.
 
 ## References & Further Study
 
-- TODO: Add relevant references
+- https://chatgpt.com/share/68577133-f0f8-8005-bb8b-564dd3160bb7
 
 
 
