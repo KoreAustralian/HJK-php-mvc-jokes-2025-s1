@@ -40,6 +40,7 @@ Used by students at North Metropolitan TAFE for learning and assessment purposes
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
 ## Description
+This project is a web-based Joke Management System with user authentication, allowing users to create, edit, delete, and browse jokes.
 
 This small demonstration application was developed to assist in the
 learning the process of developing a micro-framework.
@@ -93,13 +94,13 @@ using the following commands.
 
 ```shell
 cd $HOME/Source/Repos
-git clone https://github.com/AdyGCode/xxx-saas-vanilla-mvc-yyyy-sn
+git clone https://github.com/KoreAustralian/HJK-php-mvc-jokes-2025-s1.git
 ```
 
 Change into the folder and run the `composer` and `npm` installers:
 
 ```shell
-cd xxx-saas-vanilla-mvc-yyyy-sn-YYYY-sN
+cd HJK-php-mvc-jokes-2025-s1
 composer install
 composer update
 npm install
@@ -141,10 +142,24 @@ TODO: More details on use for use in developing basic application using this cod
 
 ## Usage
 
-> TODO: Add details of how to use this demonstration application.
-
-![Home Screen](src/images/home-screen.png)
-
+> As a viewer
+![Home page for a viewer](src/images/Home_page.png)
+![login](src/images/login_page.png)
+![register](src/images/register.png)
+> Visitors can view a random joke upon accessing the homepage. They can log in or register using the buttons located on the right side of the navigation bar.
+![jokes page for viewer](src/images/jokes_index.png)
+> When navigating to the jokes page, visitors can browse a list of existing jokes and view each joke's details by clicking on a joke's title.
+![jokes detail page for a viewer](src/images/jokes_detail_page_viewer.png)
+> On the joke detail page, the body content of the joke is also visible. To access other features, visitors need to register and log in.
+![home page for authenticated user](src/images/home_page_auth.png)
+> authenticated users see the same homepage view as visitors, with the addition of visible statistics showing the current number of users and jokes in the system.
+![user detail page](src/images/edit_profile_auth.png)
+> authenticated users can edit their details through the user page.
+![jokes about page](src/images/joke_about_oauth.png)
+![new joke page](src/images/new_joke_auth.png)
+> authenticated users can create new jokes using the New Joke button.
+![joe edit page](src/images/joke_edit_auth.png)
+> authenticated users also have the ability to edit or delete their own jokes.
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
