@@ -4,10 +4,10 @@
  *
  * Filename:        home.view.php
  * Location:        /App/views
- * Project:         XXX-SaaS-Vanilla-MVC-YYYY-SN
- * Date Created:    23/08/2024
- *
- * Author:          Adrian Gould <Adrian.Gould@nmtafe.wa.edu.au>
+ * Project:         HJK-SaaS-Vanilla-MVC-2025-S1
+ * * Date Created:    20/08/2024
+ * *
+ * * Author:          Hong Jae Kim <20115830@tafe.wa.edu.au>
  *
  */
 

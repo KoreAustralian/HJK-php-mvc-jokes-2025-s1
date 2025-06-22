@@ -1,17 +1,13 @@
 <?php
 /**
- * FILE TITLE GOES HERE
- *
- * DESCRIPTION OF THE PURPOSE AND USE OF THE CODE
- * MAY BE MORE THAN ONE LINE LONG
- * KEEP LINE LENGTH TO NO MORE THAN 96 CHARACTERS
+ * ProductController.php
  *
  * Filename:        ProductController.php
- * Location:
- * Project:         XXX-SaaS-Vanilla-MVC-YYYY-SN
- * Date Created:    22/08/2024
+ * Location:        App/controllers
+ * Project:         HJK-SaaS-Vanilla-MVC-2025-S1
+ * Date Created:    20/08/2024
  *
- * Author:          Adrian Gould <Adrian.Gould@nmtafe.wa.edu.au>
+ * Author:          Hong Jae Kim <20115830@tafe.wa.edu.au>
  *
  */
 

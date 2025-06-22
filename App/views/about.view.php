@@ -1,4 +1,18 @@
 <?php
+/**
+ * about.view.php
+ *
+ * Displays information about the application and its developer.
+ *
+ * Filename:        about.view.php
+ * Location:        App/
+ * Project:         HJK-SaaS-Vanilla-MVC-2025-S1
+ * Date Created:    20/08/2024
+ *
+ * Author:          HONG JAE KIM<20115830@tafe.wa.edu.au>
+ *
+ */
+
 loadPartial('header');
 loadPartial('navigation');
 ?>

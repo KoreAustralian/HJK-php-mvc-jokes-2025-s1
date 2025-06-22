@@ -4,10 +4,10 @@
  *
  * Filename:        navigation.view.php
  * Location:        App/views/partials
- * Project:         XXX-SaaS-Vanilla-MVC-YYYY-SN
+ * Project:         HJK-SaaS-Vanilla-MVC-2025-S1
  * Date Created:    20/08/2024
  *
- * Author:          Adrian Gould <Adrian.Gould@nmtafe.wa.edu.au>
+ * Author:          Hong Jae Kim <20115830@tafe.wa.edu.au>
  *
  */
 
